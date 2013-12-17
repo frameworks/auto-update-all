@@ -4,7 +4,7 @@
 #set -x
 
 if [ "$1" = "" ]; then
-	echo "Usage: ./update_jquery.sh <verison_number>"
+	echo "Usage: ./update_ember.sh <verison_number>"
 	exit
 fi
 
@@ -14,8 +14,9 @@ cd ..
 cd ember.js/
 
 
-curl http://builds.emberjs.com/ember-${1}.js > ember.js
-curl http://builds.emberjs.com/ember-${1}.min.js > ember.min.js
+curl http://builds.emberjs.com/tags/v${1}/ember.js > ember.js
+curl http://builds.emberjs.com/tags/v${1}/ember.min.js > ember.min.js
+curl http://builds.emberjs.com/tags/v${1}/ember.prod.js > ember.prod.js
 
 git add .
 git commit -m "${1}"
